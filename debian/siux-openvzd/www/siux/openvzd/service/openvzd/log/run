@@ -1,4 +1,0 @@
-#!/bin/sh
-
-exec setuidgid siuxopenvzd multilog !"gzip -9" n20 s16777215 /www/siux/openvzd/log/openvzd
-
