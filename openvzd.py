@@ -82,7 +82,7 @@ def vzList():
 if __name__ == '__main__':
 
 	timeSleep = 60
-	apiKey = '06d197ba7a6e13dd41c57e939ce75463'
+	apiKey = '<YOUR_API_KEY>'
 
         # read /proc/user_beadncounters
         data    = userBeancounters()
@@ -97,11 +97,11 @@ if __name__ == '__main__':
 	serverHostname = open( '/etc/hostname' ).read().split('\n')[0]
 	
 	# data add
-	server = xmlrpclib.ServerProxy( 'http://preinstall:3025/RPC2' )
+	server = xmlrpclib.ServerProxy( 'http://node.esiux.net:3025/RPC2' )
 	for vzId in vzParams:
 		params = vzParams[vzId]
 
-		print 'openvz.add(', apiKey, vzId, vzIds.get(vzId,'unknown'), serverHostname, params,')'
+		#print 'openvz.add(', apiKey, vzId, vzIds.get(vzId,'unknown'), serverHostname, params,')'
 		retAdd = server.openvz.add( apiKey, vzId, vzIds.get(vzId,'unknown'), serverHostname, params )
 		print "openvz.add(%s, %s), ... ) - > %s: %s" % (vzId, vzIds.get(vzId,'unknown'), retAdd['status'], retAdd['statusMessage' ])
 		print
