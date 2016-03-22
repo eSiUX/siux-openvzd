@@ -1,0 +1,12 @@
+Source: siux-openvzd
+Section: net
+Priority: optional
+Maintainer: Erik Brozek <debian@esiux.com>
+Build-Depends: debhelper
+
+Package: siux-openvzd
+Section: net
+Depends: adm-daemontools | daemontools, gzip, python
+Architecture: all
+Description: SiUX openvzd
+ SiUX pluing for openvz monitor

@@ -1,0 +1,19 @@
+siux-openvzd (1.0.4) unstable; urgency=low
+
+  * deamon run as root
+
+ -- Erik Brozek <debian@esiux.com>  Sun, 07 Feb 2016 23:44:06 +0100
+
+siux-openvzd (1.0.3) unstable; urgency=low
+
+  * change username for log
+
+ -- Erik Brozek <debian@esiux.com>  Sun, 07 Feb 2016 23:34:55 +0100
+
+siux-openvzd (1.0.2) unstable; urgency=low
+
+  * client for openvz monitoring
+
+ -- Erik Brozek <debian@esiux.com>  Sun, 07 Feb 2016 23:19:18 +0100
+
+

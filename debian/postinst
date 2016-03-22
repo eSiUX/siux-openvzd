@@ -1,0 +1,47 @@
+#!/bin/sh -e
+
+if [ x"$1" != "xconfigure" ]; then
+  exit 0
+fi
+
+GRP=siux
+NAME=openvzd
+
+LOG=${GRP}${NAME}log
+USR=${GRP}${NAME}
+
+DIR="/www/siux/openvzd"
+
+
+#vytvorim skupinu pokud neexituje
+if ! grep -q "^${GRP}:" /etc/group; then
+    addgroup --quiet ${GRP}
+fi
+
+#vytvorim uzivatele pokud neexituji
+if ! grep -q "^${USR}:" /etc/passwd; then
+    adduser --quiet --system --no-create-home --disabled-password --home /nonexistent --ingroup ${GRP} --gecos "${USR} user" ${USR}
+fi
+if ! grep -q "^${LOG}:" /etc/passwd; then
+    adduser --quiet --system --no-create-home --disabled-password --home /nonexistent --ingroup nogroup --gecos "${LOG} user" ${LOG}
+fi
+
+chown -R ${LOG}:root	${DIR}/log
+chown ${USR}:${GRP}     ${DIR}/var
+
+# chmod
+chmod 755 	/www/${GRP}/${NAME}/bin/*.py
+
+# clean python compiler files
+rm -f /www/${GRP}/${NAME}/bin/*.pyc
+
+for S in `ls -d ${DIR}/service/* 2>/dev/null`; do
+    B=$(basename ${S})
+    if [ ! -e /service/${DPKG_MAINTSCRIPT_PACKAGE}_${B} ]; then
+        echo -n "linking: ${S} -> /service/${DPKG_MAINTSCRIPT_PACKAGE}_${B}"
+        ln -s ${S} /service/${DPKG_MAINTSCRIPT_PACKAGE}_${B}
+        echo ". done"
+    else
+        echo "linking: /service/${DPKG_MAINTSCRIPT_PACKAGE}_${B} exist. done"
+    fi
+done

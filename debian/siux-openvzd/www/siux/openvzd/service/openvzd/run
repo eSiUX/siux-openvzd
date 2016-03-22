@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+
+ulimit -t 600
+
+#exec setuidgid siuxopenvzd setlock /www/siux/openvzd/var/main.lock /www/siux/openvzd/bin/siuxopenvzd /www/siux/openvzd/conf/openvzd.conf
+exec setlock /www/siux/openvzd/var/main.lock /www/siux/openvzd/bin/siuxopenvzd /www/siux/openvzd/conf/openvzd.conf

@@ -1,0 +1,5 @@
+openvzd.conf 		/www/siux/openvzd/conf
+openvzd.py 		/www/siux/openvzd/bin
+
+service/openvzd/run 	/www/siux/openvzd/service/openvzd
+service/openvzd/log/run /www/siux/openvzd/service/openvzd/log

@@ -1,0 +1,2 @@
+/usr/sbin/svinit /etc/init.d/siux-openvzd
+/www/siux/openvzd/bin/openvzd.py /www/siux/openvzd/bin/siuxopenvzd
